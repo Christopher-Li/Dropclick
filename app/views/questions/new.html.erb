@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1>What's your Question?</h1>
+			<form action="/new_">
+				<input type="text" name="desc" class="form-control">
+			
+			
+
+
+	 			<% @answers.each do |answer| %>
+					<input type="text" name="answer<%= answer.id %>" class="form-control">
+				<% end %>
+				
+				<input type="submit">
+			</form>
+		</div>
+	</div>
+</div>

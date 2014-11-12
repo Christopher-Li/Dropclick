@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1>What's your Question?</h1>
+			<form action="/questions/<%= params["id"] %>/update">
+				<input type="text" name="desc" class="form-control" value="<%= @question.content %>">
+			
+				<h2>Answers:</h2>
+
+				<% counter = 0 %>
+				
+	 			<% @answers.each do |answer| %>
+	 				<h3><%= (counter + 65).chr %></h3>
+					<input type="text" name="answer<%= counter %>" class="form-control" value="<%= answer.content %>">
+					<% counter += 1%>
+				<% end %>
+
+				<h3><%= (counter + 65).chr %></h3>
+				<input type="text" name="new_answer" class="form-control">
+				
+				<input type="submit" value="Update">
+			</form>
+		</div>
+	</div>
+</div>
