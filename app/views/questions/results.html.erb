@@ -1,0 +1,29 @@
+<div class="container">
+	<% counter = 0 %>
+	<% @answers.each do |answer| %>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<label for="answer<%= counter %>" class="col-md-1 control-label"><%= (counter + 65).chr %></label>
+			<div class="bargraph" id="graph<%= counter %>" value="<%= answer.votes %>">
+				
+			</div>
+			<div>
+				<%= answer.votes %>
+			</div>
+			
+		</div>
+
+		<% counter += 1%>
+
+
+	<% end %>
+	</br></br>
+	<div class="btn-group" role="group" aria-label="additional options">
+		<a href="/questions/<%= params["id"] %>" class="btn btn-default">Edit Question</a>
+	</div>
+
+	
+</div>
+<%= content_tag :div, class: "temp_information", data: {id: params["id"], answers: @answers} do %>
+<% end %>
+<%= javascript_include_tag "questions/results", :remote => true %>

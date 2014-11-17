@@ -1,25 +1,35 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<h1>What's your Question?</h1>
-			<form action="/questions/<%= params["id"] %>/update">
-				<input type="text" name="desc" class="form-control" value="<%= @question.content %>">
-			
-				<h2>Answers:</h2>
+	<div class="col-md-6 col-md-offset-3">
+		<h1>What's your Question?</h1>
+		<form class="form-horizontal" action="/questions/<%= params["id"] %>/update">
+			<input type="text" name="desc" class="form-control" value="<%= @question.content %>">
+		
+			<h2>Answers:</h2>
 
-				<% counter = 0 %>
-				
-	 			<% @answers.each do |answer| %>
-	 				<h3><%= (counter + 65).chr %></h3>
-					<input type="text" name="answer<%= counter %>" class="form-control" value="<%= answer.content %>">
+			<% counter = 0 %>
+ 			<% @answers.each do |answer| %>
+	 			<div class="row">
+	 				<label for="answer<%= counter %>" class="col-md-1 control-label"><%= (counter + 65).chr %></label>
+					<div class="col-md-11">
+						<input type="text" name="answer<%= counter %>" class="form-control" value="<%= answer.content %>">
+					</div>
+
 					<% counter += 1%>
-				<% end %>
-
-				<h3><%= (counter + 65).chr %></h3>
-				<input type="text" name="new_answer" class="form-control">
-				
-				<input type="submit" value="Update">
-			</form>
+				</div>
+			<% end %>
+			<div class="row">
+ 				<label for="answer<%= counter %>" class="col-md-1 control-label"><%= (counter + 65).chr %></label>
+				<div class="col-md-11">
+					<input type="text" name="new_answer" class="form-control">
+				</div>
+			</div>			
+			
+			<input type="submit" value="Update">
+		</form>
+		<div class="btn-group" role="group" aria-label="additional options">
+			<a href="/questions" class="btn btn-default">View all Questions</a>
+			<a href="/questions/<%= params["id"] %>/answer" class="btn btn-default">Answer</a>
+			<a href="/questions/<%= params["id"] %>/results" class="btn btn-default">See Results</a>
 		</div>
 	</div>
 </div>

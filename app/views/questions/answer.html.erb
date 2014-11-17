@@ -1,0 +1,19 @@
+<div class="container">
+	<h1><%= @question.content %></h1>
+	<form action="/questions/<%= params["id"] %>/answersubmit">
+		<% counter = 0 %>
+		<% @answers.each do |answer| %>
+			<div class="row">
+				<label class="checkbox-inline">
+					<input type="radio" name="Answerchoice" id="optionsRadios<%= counter %>" value="<%= counter %>">
+					<%= (counter + 65).chr %>. <%= answer.content %>
+				</label>
+				<% counter += 1%>
+			</div>
+		<% end %>
+		<input type="submit" value="Answer">
+	</form>
+	<div class="btn-group" role="group" aria-label="additional options">
+		<a href="/questions/<%= params["id"] %>" class="btn btn-default">Edit Question</a>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+	<h1>Questions</h1>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<td>Id</td>
+			<td>Question</td>
+			<td>Options</td>
+		</tr>
+
+	<% @questions.each do |question| %>
+		<tr>
+			<td><a href="/questions/<%= question.id %>"><%= question.id %></a></td>
+			<td><%= question.content %></td>
+			<td>
+				<a href="/questions/<%= question.id %>">Edit</a>|
+				<a href="/questions/<%= question.id %>/destroy">Destroy</a>
+			</td>
+		</tr>
+	<% end %>
+	</table>
+	<div class="btn-group" role="group" aria-label="additional options">
+		<a href="/new_question" class="btn btn-default">Add Question</a>
+	</div>
+
+</div>

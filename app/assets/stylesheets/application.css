@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+	font-family: 'Droid Serif', serif;
+}
+
+h1 {
+	padding-bottom: 30px;
+}
+
+input {
+	margin-bottom: 10px;
+}
+
+label {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.bargraph {
+	background-color: blue;
+	float: left;
+	height: 18px;
+	margin-right: 10px;
+}
