@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-		@answers = Answer.where("question_id" => params["id"])
+		@answers = Answer.where("question_id" => params["id"]).order("id ASC")
 		@question = Question.find_by("id" => params["id"])
 	end
 
@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
 		@question = Question.find_by("id" => params["id"])
 		@question.content = params["desc"]
 		@question.save
-		@answers = Answer.where("question_id" => params["id"])
+		@answers = Answer.where("question_id" => params["id"]).order("id ASC")
 		counter = 0
 		@answers.each do |answer|
 			if params["answer#{ counter }"] != ""
@@ -50,19 +50,19 @@ class QuestionsController < ApplicationController
 	end
 
 	def answer
-		@answers = Answer.where("question_id" => params["id"])
+		@answers = Answer.where("question_id" => params["id"]).order("id ASC")
 		@question = Question.find_by("id" => params["id"])
 	end
 
 	def answersubmit
-		@answers = Answer.where("question_id" => params["id"])
+		@answers = Answer.where("question_id" => params["id"]).order("id ASC")
 		@answers[params["Answerchoice"].to_i].votes += 1
 		@answers[params["Answerchoice"].to_i].save
 		redirect_to "/questions/#{params["id"]}/answer"
 	end
 
 	def results
-		@answers = Answer.where("question_id" => params["id"])
+		@answers = Answer.where("question_id" => params["id"]).order("id ASC")
 	end
 
 end

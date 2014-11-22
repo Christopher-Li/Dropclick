@@ -10,7 +10,7 @@ for (i=0; i < bargraphs.length; i++) {
 
 var maximumvalue = Math.max.apply(null, bargraphvalues);
 i = 0
-$("#graph" + i).css("background-color", "#" + 32 + 23 + 43);
+
 for (i=0; i < bargraphs.length; i++) {
 	$("#graph" + i).css("width", answers[i].votes/maximumvalue*400 + "px")
 	// bargraphs[i].css("width",maximumvalue/answers[i].votes*400 + "px")
